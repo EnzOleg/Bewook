@@ -1,0 +1,65 @@
+type Query {
+    # Пользователь
+    user(id: ID!): User
+    users: [User]
+
+    # Резюме
+    resume(id: ID!): Resume
+    resumes(count: Int!): [Resume]
+    resumesByUser(userId: ID!): [Resume]
+
+    # Стартапы
+    startup(id: ID!): Startup
+    startups(count: Int!): [Startup]
+    startupsByUser(userId: ID!): [Startup]
+    allStartups: [Startup]
+}
+
+type Mutation {
+    # Пользователь
+    createUser(name: String!): User
+
+    # Резюме
+    createResume(
+        first_name: String!
+        last_name: String!
+        city: String!
+        stack: [String!]!
+        contacts: String!
+        userId: ID!
+    ): Resume
+
+    # Стартапы
+    createStartup(
+        name: String!
+        idea: String!
+        description: String!
+        stack: [String!]!
+        contacts: String!
+        userId: ID!
+    ): Startup
+}
+
+type User {
+    id: ID!
+    name: String
+}
+
+type Resume {
+    id: ID!
+    first_name: String
+    last_name: String
+    city: String
+    stack: [String]
+    contacts: String
+}
+
+type Startup {
+    id: ID!
+    name: String
+    idea: String
+    description: String
+    stack: [String]
+    contacts: String
+    userId: ID!
+}
