@@ -17,17 +17,19 @@ type Query {
 
 type Mutation {
     # Пользователь
-    createUser(name: String!): User
+    createUser: User
 
     # Резюме
     createResume(
-        first_name: String!
-        last_name: String!
+        name: String!
         city: String!
         stack: [String!]!
+        race: String!
         contacts: String!
         userId: ID!
     ): Resume
+
+    deleteResume(id: ID!): Boolean!
 
     # Стартапы
     createStartup(
@@ -38,19 +40,21 @@ type Mutation {
         contacts: String!
         userId: ID!
     ): Startup
+
+    deleteStartup(id: ID!): Boolean!
 }
 
 type User {
     id: ID!
-    name: String
+    createdAt: String!
 }
 
 type Resume {
     id: ID!
-    first_name: String
-    last_name: String
-    city: String
+    name: String
+    region: String
     stack: [String]
+    race: String
     contacts: String
 }
 
@@ -60,6 +64,7 @@ type Startup {
     idea: String
     description: String
     stack: [String]
+    region: String
     contacts: String
     userId: ID!
 }

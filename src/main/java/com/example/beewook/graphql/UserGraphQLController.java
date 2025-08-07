@@ -22,8 +22,7 @@ public class UserGraphQLController {
     }
 
     @MutationMapping
-    public UserDTO createUser(@Argument String name) {
-        return service.createUser(name);
+    public UserDTO createUser() {
+        return service.createUser();
     }
-
 }

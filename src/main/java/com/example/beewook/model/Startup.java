@@ -3,11 +3,15 @@ package com.example.beewook.model;
 import com.example.beewook.dto.StartupDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
 @Table(name="startups")
+@Getter
+@Setter
 public class Startup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,17 +31,19 @@ public class Startup {
     @Size(max = 50)
     private List<String> stack;
 
+    private String region;
+
     @Column(name = "user_id", nullable = false)
     private Long userId;
 
     private String contacts;
 
     public Startup(StartupDTO dto) {
-        this.id = dto.getId();
         this.name = dto.getName();
         this.idea = dto.getIdea();
         this.description = dto.getDescription();
         this.stack = dto.getStack();
+        this.region = dto.getRegion();
         this.userId = dto.getUserId();
         this.contacts = dto.getContacts();
     }
@@ -57,59 +63,4 @@ public class Startup {
 
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getIdea() {
-        return idea;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public List<String> getStack() {
-        return stack;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public String getContacts() {
-        return contacts;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setIdea(String idea) {
-        this.idea = idea;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setStack(List<String> stack) {
-        this.stack = stack;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public void setContacts(String contacts) {
-        this.contacts = contacts;
-    }
 }

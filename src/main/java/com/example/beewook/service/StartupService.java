@@ -22,6 +22,13 @@ public class StartupService {
         return new StartupDTO(startupRepository.save(startup));
     }
 
+    public boolean deleteStartupById(Long id) {
+        if (startupRepository.existsById(id)) {
+            startupRepository.deleteById(id);
+        }
+        return false;
+    }
+
     public List<StartupDTO> getAll() {
         return  startupRepository.findAll().stream().map(StartupDTO::new).collect(Collectors.toList());
     }

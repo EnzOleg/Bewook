@@ -1,9 +1,13 @@
 package com.example.beewook.dto;
 
 import com.example.beewook.model.Startup;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
+@Getter
+@Setter
 public class StartupDTO {
     private Long id;
     private String name;
@@ -11,17 +15,19 @@ public class StartupDTO {
     private String description;
     private List<String> stack;
     private String contacts;
+    private String region;
     private Long userId;
 
     public StartupDTO() {}
 
-    public StartupDTO(Long id, String name, String idea, String description, List<String> stack, String contacts, Long userId) {
+    public StartupDTO(Long id, String name, String idea, String description, List<String> stack, String contacts, String region, Long userId) {
         this.id = id;
         this.name = name;
         this.idea = idea;
         this.description = description;
         this.stack = stack;
         this.contacts = contacts;
+        this.region = region;
         this.userId = userId;
     }
 
@@ -31,63 +37,9 @@ public class StartupDTO {
         this.idea = startup.getIdea();
         this.description = startup.getDescription();
         this.stack = startup.getStack();
+        this.region = startup.getRegion();
         this.contacts = startup.getContacts();
         this.userId = startup.getUserId();
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getIdea() {
-        return idea;
-    }
-
-    public void setIdea(String idea) {
-        this.idea = idea;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public List<String> getStack() {
-        return stack;
-    }
-
-    public void setStack(List<String> stack) {
-        this.stack = stack;
-    }
-
-    public String getContacts() {
-        return contacts;
-    }
-
-    public void setContacts(String contacts) {
-        this.contacts = contacts;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
 }

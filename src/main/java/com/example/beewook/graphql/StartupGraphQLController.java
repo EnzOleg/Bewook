@@ -1,6 +1,7 @@
 package com.example.beewook.graphql;
 
 import com.example.beewook.dto.StartupDTO;
+import com.example.beewook.repository.StartupRepository;
 import com.example.beewook.service.StartupService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
@@ -14,9 +15,11 @@ import java.util.Optional;
 public class StartupGraphQLController {
 
     private final StartupService startupService;
+    private final StartupRepository startupRepository;
 
-    public StartupGraphQLController(StartupService startupService) {
+    public StartupGraphQLController(StartupService startupService, StartupRepository startupRepository) {
         this.startupService = startupService;
+        this.startupRepository = startupRepository;
     }
 
     @QueryMapping(name = "allStartups")
@@ -39,12 +42,19 @@ public class StartupGraphQLController {
         return startupService.getByUserId(userId);
     }
 
+
+    @MutationMapping
+    public boolean deleteStartup(@Argument Long id) {
+        return startupService.deleteStartupById(id);
+    }
+
     @MutationMapping
     public StartupDTO createStartup(
             @Argument String name,
             @Argument String idea,
             @Argument String description,
             @Argument List<String> stack,
+            @Argument String region,
             @Argument String contacts,
             @Argument Long userId
     ) {
@@ -53,6 +63,7 @@ public class StartupGraphQLController {
         dto.setIdea(idea);
         dto.setDescription(description);
         dto.setStack(stack);
+        dto.setRegion(region);
         dto.setContacts(contacts);
         dto.setUserId(userId);
 

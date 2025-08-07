@@ -44,15 +44,20 @@ public class ResumeGraphQLController {
 
 
     @MutationMapping
+    public boolean deleteResume(@Argument Long id) {
+        return resumeService.deleteResumeById(id);
+    }
+
+    @MutationMapping
     public ResumeDTO createResume(
-            @Argument String first_name,
-            @Argument String last_name,
-            @Argument String city,
+            @Argument String name,
+            @Argument String region,
             @Argument List<String> stack,
+            @Argument String race,
             @Argument String contacts,
-            @Argument Long userId // добавлен
+            @Argument Long userId
     ) {
-        ResumeDTO dto = new ResumeDTO(null, first_name, last_name, city, stack, contacts, userId); // поправлен
+        ResumeDTO dto = new ResumeDTO(null, name, region, stack, race, contacts, userId);
         return resumeService.createResume(dto);
     }
 }

@@ -18,20 +18,18 @@ public class UserService {
 
     public List<UserDTO> getAllUsers() {
         return repo.findAll().stream()
-                .map(user -> new UserDTO(user.getId(), user.getName()))
+                .map(user -> new UserDTO(user.getId(), user.getCreatedAt()))
                 .collect(Collectors.toList());
     }
 
     public UserDTO getUserById(Long id) {
         var user = repo.findById(id).orElseThrow();
-        return new UserDTO(user.getId(), user.getName());
+        return new UserDTO(user.getId(), user.getCreatedAt());
     }
 
-    public UserDTO createUser(String name) {
-        User user = new User(name);
+    public UserDTO createUser() {
+        User user = new User();
         user = repo.save(user);
-        return new UserDTO(user.getId(), user.getName());
+        return new UserDTO(user.getId(), user.getCreatedAt());
     }
-
-
 }

@@ -22,6 +22,14 @@ public class ResumeService {
         return new ResumeDTO(resumeRepository.save(resume));
     }
 
+    public boolean deleteResumeById(Long id) {
+        if (resumeRepository.existsById(id)) {
+            resumeRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
     public List<ResumeDTO> getAll() {
         return resumeRepository.findAll().stream().map(ResumeDTO::new).collect(Collectors.toList());
     }
