@@ -22,6 +22,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-graphql")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
+	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	implementation("io.github.cdimascio:dotenv-java:3.0.0")
 	compileOnly("org.projectlombok:lombok:1.18.32")
 	annotationProcessor("org.projectlombok:lombok:1.18.32")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
