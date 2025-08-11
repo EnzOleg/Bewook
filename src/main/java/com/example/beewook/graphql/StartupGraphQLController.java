@@ -51,7 +51,6 @@ public class StartupGraphQLController {
     @MutationMapping
     public StartupDTO createStartup(
             @Argument String name,
-            @Argument String idea,
             @Argument String description,
             @Argument List<String> stack,
             @Argument String region,
@@ -60,7 +59,6 @@ public class StartupGraphQLController {
     ) {
         StartupDTO dto = new StartupDTO();
         dto.setName(name);
-        dto.setIdea(idea);
         dto.setDescription(description);
         dto.setStack(stack);
         dto.setRegion(region);

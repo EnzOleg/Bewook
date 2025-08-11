@@ -11,7 +11,6 @@ import java.util.List;
 public class StartupDTO {
     private Long id;
     private String name;
-    private String idea;
     private String description;
     private List<String> stack;
     private String contacts;
@@ -20,10 +19,9 @@ public class StartupDTO {
 
     public StartupDTO() {}
 
-    public StartupDTO(Long id, String name, String idea, String description, List<String> stack, String contacts, String region, Long userId) {
+    public StartupDTO(Long id, String name, String description, List<String> stack, String contacts, String region, Long userId) {
         this.id = id;
         this.name = name;
-        this.idea = idea;
         this.description = description;
         this.stack = stack;
         this.contacts = contacts;
@@ -34,7 +32,6 @@ public class StartupDTO {
     public StartupDTO(Startup startup) {
         this.id = startup.getId();
         this.name = startup.getName();
-        this.idea = startup.getIdea();
         this.description = startup.getDescription();
         this.stack = startup.getStack();
         this.region = startup.getRegion();

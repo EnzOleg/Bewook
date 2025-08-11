@@ -20,9 +20,6 @@ public class Startup {
     @Column(length = 100)
     private String name;
 
-    @Column(length = 1000)
-    private String idea;
-
     private String description;
 
     @ElementCollection
@@ -40,7 +37,6 @@ public class Startup {
 
     public Startup(StartupDTO dto) {
         this.name = dto.getName();
-        this.idea = dto.getIdea();
         this.description = dto.getDescription();
         this.stack = dto.getStack();
         this.region = dto.getRegion();
@@ -49,10 +45,9 @@ public class Startup {
     }
 
 
-    public Startup(Long id, String name, String idea, String description, List<String> stack, Long userId, String contacts) {
+    public Startup(Long id, String name, String description, List<String> stack, Long userId, String contacts) {
         this.id = id;
         this.name = name;
-        this.idea = idea;
         this.description = description;
         this.stack = stack;
         this.contacts = contacts;
