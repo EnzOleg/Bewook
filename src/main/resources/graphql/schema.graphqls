@@ -60,6 +60,7 @@ type Resume {
     stack: [String]
     race: String
     contacts: String
+    userId: ID!
 }
 
 type Startup {
