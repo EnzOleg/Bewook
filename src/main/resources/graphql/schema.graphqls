@@ -25,7 +25,7 @@ type Mutation {
     # Резюме
     createResume(
         name: String!
-        city: String!
+        region: String!
         stack: [String!]!
         race: String!
         contacts: String!
@@ -39,6 +39,7 @@ type Mutation {
         name: String!
         idea: String!
         description: String!
+        region: String!
         stack: [String!]!
         contacts: String!
         userId: ID!
