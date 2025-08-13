@@ -51,13 +51,29 @@ public class ResumeGraphQLController {
     @MutationMapping
     public ResumeDTO createResume(
             @Argument String name,
+            @Argument String description,
             @Argument String region,
             @Argument List<String> stack,
             @Argument String race,
             @Argument String contacts,
             @Argument Long userId
     ) {
-        ResumeDTO dto = new ResumeDTO(null, name, region, stack, race, contacts, userId);
+        ResumeDTO dto = new ResumeDTO(null, name, description, region, stack, race, contacts, userId);
         return resumeService.createResume(dto);
     }
+
+    @MutationMapping
+    public ResumeDTO updateResume(
+            @Argument Long id,
+            @Argument String name,
+            @Argument String description,
+            @Argument String region,
+            @Argument List<String> stack,
+            @Argument String race,
+            @Argument String contacts
+    ) {
+        ResumeDTO dto = new ResumeDTO(id, name, description, region, stack, race, contacts, null);
+        return resumeService.updateResume(dto);
+    }
+
 }

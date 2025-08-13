@@ -29,6 +29,19 @@ public class StartupService {
         return false;
     }
 
+    public StartupDTO updateStartup(StartupDTO dto) {
+        Startup startup = startupRepository.findById(dto.getId())
+                .orElseThrow(() -> new RuntimeException("Startup not found"));
+
+        if (dto.getName() != null) startup.setName(dto.getName());
+        if (dto.getDescription() != null) startup.setDescription(dto.getDescription());
+        if (dto.getStack() != null) startup.setStack(dto.getStack());
+        if (dto.getRegion() != null) startup.setRegion(dto.getRegion());
+        if (dto.getContacts() != null) startup.setContacts(dto.getContacts());
+
+        return new StartupDTO(startupRepository.save(startup));
+    }
+
     public List<StartupDTO> getAll() {
         return  startupRepository.findAll().stream().map(StartupDTO::new).collect(Collectors.toList());
     }
@@ -38,7 +51,6 @@ public class StartupService {
                 .map(StartupDTO::new)
                 .collect(Collectors.toList());
     }
-
 
     public List<StartupDTO> getByUserId(Long userId) {
         return startupRepository.findByUserId(userId).stream()

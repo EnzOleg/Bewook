@@ -20,6 +20,9 @@ public class Resume {
     @Column(length = 50)
     private String name;
 
+    @Column(length = 255)
+    private String description;
+
     private String region;
 
     @ElementCollection
@@ -39,12 +42,13 @@ public class Resume {
     public Resume() {}
 
     public Resume(ResumeDTO dto) {
-        this(dto.getId(), dto.getName(), dto.getRegion(), dto.getStack(), dto.getRace(), dto.getContacts(), dto.getUserId());
+        this(dto.getId(), dto.getName(), dto.getDescription(), dto.getRegion(), dto.getStack(), dto.getRace(), dto.getContacts(), dto.getUserId());
     }
 
-    public Resume(Long id, String name, String region, List<String> stack, String race, String contacts, Long userId) {
+    public Resume(Long id, String name, String description, String region, List<String> stack, String race, String contacts, Long userId) {
         this.id = id;
         this.name = name;
+        this.description = description;
         this.region = region;
         this.stack = stack;
         this.race = race;

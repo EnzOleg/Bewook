@@ -25,11 +25,22 @@ type Mutation {
     # Резюме
     createResume(
         name: String!
+        description: String!
         region: String!
         stack: [String!]!
         race: String!
         contacts: String!
         userId: ID!
+    ): Resume
+
+    updateResume(
+        id: ID!,
+        name: String,
+        description: String,
+        region: String,
+        stack: [String],
+        race: String,
+        contacts: String
     ): Resume
 
     deleteResume(id: ID!): Boolean!
@@ -44,6 +55,15 @@ type Mutation {
         userId: ID!
     ): Startup
 
+    updateStartup(
+        id: ID!,
+        name: String,
+        description: String,
+        stack: [String],
+        region: String,
+        contacts: String
+    ): Startup
+
     deleteStartup(id: ID!): Boolean!
 }
 
@@ -55,6 +75,7 @@ type User {
 type Resume {
     id: ID!
     name: String
+    description: String
     region: String
     stack: [String]
     race: String

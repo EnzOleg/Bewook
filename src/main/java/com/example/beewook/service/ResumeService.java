@@ -30,6 +30,20 @@ public class ResumeService {
         return false;
     }
 
+    public ResumeDTO updateResume(ResumeDTO dto) {
+        Resume resume = resumeRepository.findById(dto.getId())
+                .orElseThrow(() -> new RuntimeException("Resume not found"));
+
+        if (dto.getName() != null) resume.setName(dto.getName());
+        if (dto.getDescription() != null) resume.setDescription(dto.getDescription());
+        if (dto.getRegion() != null) resume.setRegion(dto.getRegion());
+        if (dto.getStack() != null) resume.setStack(dto.getStack());
+        if (dto.getRace() != null) resume.setRace(dto.getRace());
+        if (dto.getContacts() != null) resume.setContacts(dto.getContacts());
+
+        return new ResumeDTO(resumeRepository.save(resume));
+    }
+
     public List<ResumeDTO> getAll() {
         return resumeRepository.findAll().stream().map(ResumeDTO::new).collect(Collectors.toList());
     }

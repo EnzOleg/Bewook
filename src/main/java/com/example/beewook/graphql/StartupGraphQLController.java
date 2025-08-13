@@ -67,4 +67,24 @@ public class StartupGraphQLController {
 
         return startupService.createStartup(dto);
     }
+
+    @MutationMapping
+    public StartupDTO updateStartup(
+            @Argument Long id,
+            @Argument String name,
+            @Argument String description,
+            @Argument List<String> stack,
+            @Argument String region,
+            @Argument String contacts
+    ) {
+        StartupDTO dto = new StartupDTO();
+        dto.setId(id);
+        dto.setName(name);
+        dto.setDescription(description);
+        dto.setStack(stack);
+        dto.setRegion(region);
+        dto.setContacts(contacts);
+        return startupService.updateStartup(dto);
+    }
+
 }

@@ -11,6 +11,7 @@ import java.util.List;
 public class ResumeDTO {
     private Long id;
     private String name;
+    private String description;
     private String region;
     private List<String> stack;
     private String race;
@@ -18,9 +19,10 @@ public class ResumeDTO {
     private Long userId;
 
 
-    public ResumeDTO(Long id, String name, String region, List<String> stack, String race, String contacts, Long userId) {
+    public ResumeDTO(Long id, String name, String description, String region, List<String> stack, String race, String contacts, Long userId) {
         this.id = id;
         this.name = name;
+        this.description = description;
         this.region = region;
         this.stack = stack;
         this.race = race;
@@ -29,7 +31,7 @@ public class ResumeDTO {
     }
 
     public ResumeDTO(Resume resume) {
-        this(resume.getId(), resume.getName(), resume.getRegion(), resume.getStack(), resume.getRace(), resume.getContacts(),  resume.getUserId());
+        this(resume.getId(), resume.getName(), resume.getDescription(), resume.getRegion(), resume.getStack(), resume.getRace(), resume.getContacts(),  resume.getUserId());
     }
 
 }
