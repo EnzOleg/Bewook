@@ -15,7 +15,7 @@ public class AiGraphQLController {
     }
 
     @QueryMapping
-    public String askAiMagically(@Argument String prompt) {
-        return aiService.generateMagicalResponse(prompt);
+    public String askAiMagically(@Argument String prompt, @Argument String race) {
+        return aiService.generateMagicalResponse(prompt, race);
     }
 }

@@ -15,7 +15,7 @@ type Query {
     allStartups: [Startup]
 
     # Ai
-    askAiMagically(prompt: String!): String
+    askAiMagically(prompt: String!, race: String): String
 }
 
 type Mutation {
